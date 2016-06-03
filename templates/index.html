@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MyBlogg</title>
+  </head>
+  <body>
+    <header>
+      <h1><center>MyBlogg</center></h1>
+    </header>
+    <main>
+        {%for post in datos%}
+            <h3>{{post.titulo}}</h3>
+            <hr>
+            <p>
+              {{post.contenido}}
+            </p>
+            <img src="{{post.imagen}}" alt="Foto del Post" />
+            <p><a href="{% url 'detalle' post.id %}">Ver Detalle</a></p>
+            <hr />
+            <hr />
+        {% endfor %}
+
+        <a href="{url 'nuevo_post' %}">Crea tu Propio Post</a>
+
+    </main>
+  </body>
+</html>

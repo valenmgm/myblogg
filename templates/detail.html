@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Blogg Detail</title>
+  </head>
+  <body>
+    <main>
+      <h3>{{datospost.titulo}}</h3>
+      <hr>
+      <p>
+        {{datospost.contenido}}
+      </p>
+      <img src="{{datospost.imagen}}" alt="Foto del Post"/>
+      <hr />
+      <hr />
+      <hr />
+      <h2>Comments</h2>
+        {% for element in datoscomment %}
+        <p>
+          {{element.comentario}}
+          <h6>{{element.autorcomment.first_name}}
+          {{element.fecha}}</h6>
+        </p>
+        <p>
+          {{comentario.autor.email}}
+        </p>
+        {%endfor%}
+<!-- trabajando form para meter nuevos comentario -->
+      <form method="post" action="">
+        {%csrf_token%}
+          {{formfill}}
+          <input type="submit" value="Mandar">
+      </form>
+
+      <p><a href="{% url 'home' %}">Regresar a Pagina Principal</a></p>
+      <hr />
+    </main>
+  </body>
+</html>
