@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 #
 from . import models
@@ -46,5 +46,8 @@ def newpost(request):
             nuevopost = nuevopost.make(titulo, contenido, imagen, autor)
             nuevopost.save()
 
+            idnew = models.Post.objects.latest('fechal')
+            return redirect('detalle', idnew.id)
+            #return redirect(detail(args=[request, idnew.id]))
 
     return(render(request, 'newpost.html', {'formfill':formNP}))

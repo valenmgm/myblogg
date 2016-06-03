@@ -15,7 +15,7 @@ class Post(models.Model):
 
     #Attributes
     titulo = models.CharField(max_length= 120, blank=False)
-    fecha = models.DateField(auto_now_add=True)
+    fecha = models.DateTimeField(auto_now_add=True, name='fechal')
     contenido = models.TextField(blank=False)
     imagen = models.ImageField(upload_to='post-images', blank=True)
 
